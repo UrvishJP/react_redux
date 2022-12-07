@@ -1,13 +1,20 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { actionCreators } from '../state'
 
 const Shop = () => {
+
+  const dispatch = useDispatch()
+  const {withdrawMoney,depositMoney} = bindActionCreators(actionCreators, dispatch)
+
   return (
     <>
-        <h2>Buy PUMA shoes 5000 Rs</h2>
     <div style={{display:'flex',justifyContent:'center',marginTop:'150px'}}>
-        <button className="btn btn-primary mx-2">-</button>
-        Add to cart
-        <button className="btn btn-primary mx-2">+</button>
+        <h2>Deposit/Withdrow money</h2>
+        <button className="btn btn-primary mx-2" onClick={()=>{withdrawMoney(100)}}>-</button>
+        Update Balance
+        <button className="btn btn-primary mx-2" onClick={()=>{depositMoney(100)}}>+</button>
     </div>
     </>
   )
